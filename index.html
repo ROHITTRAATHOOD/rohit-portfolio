@@ -1,181 +1,516 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rohit Rathod Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohit Rathod | Portfolio</title>
+    <style>
+        /* Modern Dark Theme */
+        :root {
+            --bg-primary: #0a0f1d;
+            --bg-secondary: #131b2e;
+            --accent: #00f0ff;
+            --text-main: #f0f4f8;
+            --text-muted: #94a3b8;
+            --card-border: #1e293b;
+        }
 
-  <link rel="stylesheet" href="style.css"/>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            background-color: rgba(10, 15, 29, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 20px 60px;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 80vh;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 80px;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero h3 {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-img {
+            width: 450px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+            display: block;
+        }
+
+        .cta-btn {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+
+        .cta-btn-filled {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+            border: 2px solid var(--accent);
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-btn-filled:hover {
+            background-color: transparent;
+            color: var(--accent);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+
+        /* Section Headers */
+        .section-title {
+            font-size: 2.5rem;
+            margin: 80px 0 40px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 5px solid var(--accent);
+            font-weight: 800;
+        }
+
+        /* Coding Platforms & Socials Grid */
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 80px;
+        }
+
+        .profile-card {
+            background-color: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.1);
+            color: var(--accent);
+        }
+
+        .profile-card font {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .profile-card span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .skill-card {
+            background-color: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill-card h4 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin-bottom: 80px;
+        }
+
+        .project-card {
+            background-color: var(--bg-secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+        }
+
+        .project-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: #0d1425;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--card-border);
+            font-weight: 600;
+        }
+
+        .project-content {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+        .project-title {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .project-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background-color: rgba(0, 240, 255, 0.1);
+            color: var(--accent);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--bg-secondary);
+            padding: 60px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+            margin-bottom: 80px;
+        }
+
+        .contact p {
+            color: var(--text-muted);
+            margin: 15px 0 35px;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--card-border);
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                min-height: auto;
+                padding-top: 40px;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-img {
+                width: 300px;
+                height: 300px;
+                order: -1;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <h2 class="logo">Rohit.</h2>
+    <header>
+        <nav>
+            <a href="#" class="logo">Rohit <span>Portfolio</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#profiles">Profiles</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <div class="container">
+        <section class="hero" id="hero">
+            <div class="hero-text">
+                <h3>High-Performance Technical Specialist</h3>
+                <h1>Rohit Rathod</h1>
+                <p>Focused on MIS Automation, Full-Stack Web Development, Data Architecture, and Competitive Programming.</p>
+                <div class="hero-buttons">
+                    <a href="https://drive.google.com/file/d/1t7yBOoi-MvITNWWVwyibNntw8xGKW3DJ/view?usp=sharing" target="_blank" class="cta-btn-filled">View Resume</a>
+                    <a href="#contact" class="cta-btn">Get in Touch</a>
+                </div>
+            </div>
+            <img src="hero-image.jpg" alt="Rohit Rathod Hero Image" class="hero-img" onerror="this.style.display='none'">
+        </section>
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-
-    <div class="hero-text">
-      <h1>Hello, I'm <span>Rohit Rathod</span></h1>
-
-      <h3>Frontend Developer</h3>
-
-      <p>
-        I create modern responsive websites using HTML, CSS,
-        JavaScript and React.
-      </p>
-
-      <div class="buttons">
-        <a href="#projects" class="btn">View Projects</a>
-        <a href="#contact" class="btn-outline">Hire Me</a>
-      </div>
-
-      <div class="socials">
-        <a href="#"><i class="fab fa-github"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-
-    <div class="hero-image">
-      <img
-        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43d?q=80&w=1000&auto=format&fit=crop"
-        alt="profile"
-      />
-    </div>
-
-  </section>
-
-  <!-- About -->
-  <section class="about" id="about">
-
-    <h2>About Me</h2>
-
-    <p>
-      I'm a passionate web developer who loves creating beautiful
-      and functional websites. I enjoy building responsive and
-      interactive user experiences.
-    </p>
-
-  </section>
-
-  <!-- Skills -->
-  <section class="skills" id="skills">
-
-    <h2>Skills</h2>
-
-    <div class="skills-grid">
-
-      <div class="skill-card">HTML</div>
-      <div class="skill-card">CSS</div>
-      <div class="skill-card">JavaScript</div>
-      <div class="skill-card">React</div>
-      <div class="skill-card">GitHub</div>
-      <div class="skill-card">Responsive Design</div>
-
-    </div>
-
-  </section>
-
-  <!-- Projects -->
-  <section class="projects" id="projects">
-
-    <h2>Projects</h2>
-
-    <div class="project-grid">
-
-      <div class="project-card">
-        <img
-          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop"
-          alt=""
-        />
-
-        <div class="project-content">
-          <h3>Portfolio Website</h3>
-
-          <p>Modern responsive portfolio website.</p>
-
-          <a href="#" class="btn-small">Live Demo</a>
+        <h2 class="section-title" id="about">Professional Profile</h2>
+        <div style="background-color: var(--bg-secondary); padding: 40px; border-radius: 10px; border: 1px solid var(--card-border); margin-bottom: 80px;">
+            <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 900px; margin-bottom: 20px;">
+                I specialize in building robust digital ecosystems, solving complex algorithmic problems, and streamlining operational workflows. With a deep foundation in management information systems (MIS), data structures, and modern web technologies, I deliver scalable, data-centric solutions.
+            </p>
+            <p style="color: var(--text-main); font-size: 1.1rem; font-weight: 600;">
+                Core Philosophy: Optimize. Automate. Scale.
+            </p>
         </div>
-      </div>
 
-      <div class="project-card">
-        <img
-          src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1000&auto=format&fit=crop"
-          alt=""
-        />
-
-        <div class="project-content">
-          <h3>Business Website</h3>
-
-          <p>Responsive company website design.</p>
-
-          <a href="#" class="btn-small">Live Demo</a>
+        <h2 class="section-title" id="profiles">Coding Platforms & Socials</h2>
+        <div class="profiles-grid">
+            <a href="https://leetcode.com/u/Rohit_Rathod30" target="_blank" class="profile-card">
+                <font style="color: #ffa116;">LeetCode</font>
+                <span>@Rohit_Rathod30</span>
+            </a>
+            <a href="https://codeforces.com/profile/rarohit141" target="_blank" class="profile-card">
+                <font style="color: #ff3333;">Codeforces</font>
+                <span>@rarohit141</span>
+            </a>
+            <a href="https://www.hackerrank.com/profile/rarohit141" target="_blank" class="profile-card">
+                <font style="color: #2ec866;">HackerRank</font>
+                <span>@rarohit141</span>
+            </a>
+            <a href="https://www.hackerearth.com/@RohitRathod." target="_blank" class="profile-card">
+                <font style="color: #323759; text-shadow: 0 0 1px #fff;">HackerEarth</font>
+                <span>@RohitRathod.</span>
+            </a>
+            <a href="https://github.com/ROHITTRAATHOOD" target="_blank" class="profile-card">
+                <font style="color: #ffffff;">GitHub</font>
+                <span>@ROHITTRAATHOOD</span>
+            </a>
+            <a href="https://www.linkedin.com/in/rohittraathood" target="_blank" class="profile-card">
+                <font style="color: #0a66c2;">LinkedIn</font>
+                <span>Professional Network</span>
+            </a>
+            <a href="https://www.youtube.com/@TOP1RR" target="_blank" class="profile-card">
+                <font style="color: #ff0000;">YouTube</font>
+                <span>@TOP1RR</span>
+            </a>
+            <a href="https://www.instagram.com/me_rohit_rathod" target="_blank" class="profile-card">
+                <font style="color: #e1306c;">Instagram</font>
+                <span>@me_rohit_rathod</span>
+            </a>
         </div>
-      </div>
 
-      <div class="project-card">
-        <img
-          src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop"
-          alt=""
-        />
-
-        <div class="project-content">
-          <h3>Dashboard UI</h3>
-
-          <p>Admin dashboard interface.</p>
-
-          <a href="#" class="btn-small">Live Demo</a>
+        <h2 class="section-title" id="expertise">Core Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h4>Algorithms & Problem Solving</h4>
+                <p>Active competitor on algorithmic platforms, proficient in data structures, optimization, and advanced logic.</p>
+            </div>
+            <div class="skill-card">
+                <h4>MIS & Automation</h4>
+                <p>Designing automated reporting pipelines, workflow optimization, and centralized management dashboards.</p>
+            </div>
+            <div class="skill-card">
+                <h4>Full-Stack Development</h4>
+                <p>Building responsive frontends and secure backends using modern frameworks and database architectures.</p>
+            </div>
         </div>
-      </div>
 
+        <h2 class="section-title" id="projects">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image-placeholder">[Dashboard Interface]</div>
+                <div class="project-content">
+                    <h3 class="project-title">Automated Command Hub</h3>
+                    <p>A real-time MIS dashboard that integrates various data streams for operational monitoring and executive reporting.</p>
+                    <div class="project-tags">
+                        <span class="tag">Automation</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Web Portal</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image-placeholder">[Database View]</div>
+                <div class="project-content">
+                    <h3 class="project-title">Technical Inventory System</h3>
+                    <p>Custom web application for tracking technical assets, maintenance cycles, and system utilization metrics.</p>
+                    <div class="project-tags">
+                        <span class="tag">Frontend</span>
+                        <span class="tag">Backend</span>
+                        <span class="tag">MIS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="contact">Get In Touch</h2>
+        <section class="contact">
+            <h2>Let's build something great together.</h2>
+            <p>Feel free to reach out for career opportunities, technical collaborations, or just a quick chat about algorithms.</p>
+            <a href="mailto:rarohit141@gmail.com" class="cta-btn-filled">Email: rarohit141@gmail.com</a>
+        </section>
     </div>
 
-  </section>
-
-  <!-- Contact -->
-  <section class="contact" id="contact">
-
-    <h2>Contact Me</h2>
-
-    <form>
-
-      <input type="text" placeholder="Your Name" required />
-
-      <input type="email" placeholder="Your Email" required />
-
-      <textarea rows="6" placeholder="Message"></textarea>
-
-      <button type="submit">Send Message</button>
-
-    </form>
-
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 Rohit Rathod. All Rights Reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
-
+    <footer>
+        <p>&copy; 2026 Rohit Rathod. Designed & optimized for high performance.</p>
+    </footer>
 </body>
-</html>  
+</html>
