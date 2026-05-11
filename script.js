@@ -1,55 +1,15 @@
-// Professional Typewriter Engine
-const TxtType = function(el, toRotate, period) {
-    this.toRotate = toRotate;
-    this.el = el;
-    this.loopNum = 0;
-    this.period = parseInt(period, 10) || 2000;
-    this.txt = '';
-    this.tick();
-    this.isDeleting = false;
-};
+window.addEventListener('scroll', () => {
 
-TxtType.prototype.tick = function() {
-    const i = this.loopNum % this.toRotate.length;
-    const fullTxt = this.toRotate[i];
+  const navbar = document.querySelector('.navbar');
 
-    if (this.isDeleting) {
-        this.txt = fullTxt.substring(0, this.txt.length - 1);
-    } else {
-        this.txt = fullTxt.substring(0, this.txt.length + 1);
-    }
+  if(window.scrollY > 50){
 
-    this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+    navbar.style.background = 'rgba(5,8,22,0.98)';
 
-    const that = this;
-    let delta = 150 - Math.random() * 100;
+  } else {
 
-    if (this.isDeleting) { 
-        delta /= 2; 
-    }
+    navbar.style.background = 'rgba(5,8,22,0.9)';
 
-    if (!this.isDeleting && this.txt === fullTxt) {
-        delta = this.period;
-        this.isDeleting = true;
-    } else if (this.isDeleting && this.txt === '') {
-        this.isDeleting = false;
-        this.loopNum++;
-        delta = 500;
-    }
+  }
 
-    setTimeout(function() {
-        that.tick();
-    }, delta);
-};
-
-// Initializes the typing effect automatically on page load
-window.addEventListener('DOMContentLoaded', () => {
-    const elements = document.getElementsByClassName('typewriter');
-    for (let i = 0; i < elements.length; i++) {
-        const toRotate = elements[i].getAttribute('data-words');
-        const period = elements[i].getAttribute('data-period');
-        if (toRotate) {
-            new TxtType(elements[i], JSON.parse(toRotate), period);
-        }
-    }
 });
