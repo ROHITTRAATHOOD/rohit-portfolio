@@ -4,11 +4,7 @@ window.addEventListener('scroll', () => {
 
   if(window.scrollY > 50){
 
-    navbar.style.background = 'rgba(5,8,22,0.98)';
-
-  } else {
-
-    navbar.style.background = 'rgba(5,8,22,0.9)';
+    navbar.style.background = '#050816';
 
   }
 
