@@ -1,11 +1,13 @@
-window.addEventListener('scroll', () => {
+// Smooth Navbar Shadow On Scroll
 
-  const navbar = document.querySelector('.navbar');
+window.addEventListener("scroll", () => {
 
-  if(window.scrollY > 50){
+    const navbar = document.querySelector(".navbar");
 
-    navbar.style.background = '#050816';
-
-  }
+    if (window.scrollY > 50) {
+        navbar.style.boxShadow = "0 10px 30px rgba(0,0,0,0.3)";
+    } else {
+        navbar.style.boxShadow = "none";
+    }
 
 });
